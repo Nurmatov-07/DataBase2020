@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='UTF-8'>
+  
+  <title>Responsive Table</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <style>
+  * { 
+    margin: 0; 
+    padding: 0; 
+  }
+  body { 
+    font: 14px/1.4 Georgia, Serif; 
+  }
+  
+  /* 
+  Generic Styling, for Desktops/Laptops 
+  */
+  table { 
+    width: 100%; 
+    border-collapse: collapse; 
+  }
+  /* Zebra striping */
+  tr:nth-of-type(odd) { 
+    background: #eee; 
+  }
+  th { 
+    background: #333; 
+    color: white; 
+    font-weight: bold; 
+  }
+  td, th { 
+    padding: 6px; 
+    border: 1px solid #9B9B9B; 
+    text-align: left; 
+  }
+  @media 
+  only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px)  {
+    table, thead, tbody, th, td, tr { display: block; }
+    thead tr { position: absolute;top: -9999px;left: -9999px;}
+    tr { border: 1px solid #9B9B9B; }
+    td { border: none;border-bottom: 1px solid #9B9B9B; position: relative;padding-left: 50%; }
+    
+    td:before { position: absolute;top: 6px;left: 6px;width: 45%; padding-right: 10px; white-space: nowrap;}
+    
+    /*
+    Label the data
+    */
+td:nth-of-type(0):before { content: "SERIAL_ID"; }
+td:nth-of-type(1):before { content: "PERSON_ID"; }
+td:nth-of-type(2):before { content: "SERIAL_NAME"; }
+td:nth-of-type(3):before { content: "PERSON_NAME"; }
+  }
+  
+  /* Smartphones (portrait and landscape) ----------- */
+  @media only screen
+  and (min-device-width : 320px)
+  and (max-device-width : 480px) {
+    body { 
+      padding: 0; 
+      margin: 0; 
+      width: 320px; }
+    }
+  
+  /* iPads (portrait and landscape) ----------- */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    body { 
+      width: 495px; 
+    }
+  }
+  
+  </style>
+  <!--<![endif]-->
+<script type="text/javascript">
+
+function search(){
+  
+  var s = document.getElementById('search').value;
+
+  rows = document.getElementById('data').getElementsByTagName('TR');
+  for(var i=0;i<rows.length;i++){
+    if ( rows[i].textContent.indexOf(s)>0  || s.length==0 ) {
+	  rows[i].style.display ='';
+    } else {
+      rows[i].style.display ='none';
+    }
+  }
+}
+
+
+var timer;
+function delayedSearch() {
+	clearTimeout(timer);
+	console.log('delay-ing')
+    timer = setTimeout(function () {
+		console.log('delay-running')
+		search();
+    }, 500);
+  }</script>
+</head>
+
+<body>
+<div><input type="text" size="30" maxlength="1000" value="" id="search" onkeyup="delayedSearch();" /><input type="button" value="Go" onclick="lsearch();"/> </div>
+<table><thead><tr>	<th>SERIAL_ID</th>
+	<th>PERSON_ID</th>
+	<th>SERIAL_NAME</th>
+	<th>PERSON_NAME</th>
+</tr></thead>
+<tbody id="data">
+
+	<tr>
+<td align="right">1</td>
+<td align="right">18</td>
+<td>Кухня</td>
+<td>Дмитрий Назаров</td>
+	</tr>
+	<tr>
+<td align="right">1</td>
+<td align="right">19</td>
+<td>Кухня</td>
+<td>Марк Богатырев</td>
+	</tr>
+	<tr>
+<td align="right">1</td>
+<td align="right">20</td>
+<td>Кухня</td>
+<td>Дмитрий Нагиев</td>
+	</tr>
+	<tr>
+<td align="right">2</td>
+<td align="right">20</td>
+<td>Физрук</td>
+<td>Дмитрий Нагиев</td>
+	</tr>
+	<tr>
+<td align="right">1</td>
+<td align="right">22</td>
+<td>Кухня</td>
+<td>Елена Подкаминская</td>
+	</tr>
+	<tr>
+<td align="right">1</td>
+<td align="right">23</td>
+<td>Кухня</td>
+<td>Марина Могилевская</td>
+	</tr>
+	<tr>
+<td align="right">1</td>
+<td align="right">24</td>
+<td>Кухня</td>
+<td>Виктор Хориняк</td>
+	</tr>
+	<tr>
+<td align="right">2</td>
+<td align="right">25</td>
+<td>Физрук</td>
+<td>Александр Гордон</td>
+	</tr>
+	<tr>
+<td align="right">2</td>
+<td align="right">26</td>
+<td>Физрук</td>
+<td>Полина Гренц</td>
+	</tr>
+	<tr>
+<td align="right">2</td>
+<td align="right">27</td>
+<td>Физрук</td>
+<td>Анастасия Панина</td>
+	</tr>
+	<tr>
+<td align="right">2</td>
+<td align="right">28</td>
+<td>Физрук</td>
+<td>Владимир Сычев</td>
+	</tr>
+	<tr>
+<td align="right">2</td>
+<td align="right">29</td>
+<td>Физрук</td>
+<td>Даниил Вахрушев</td>
+	</tr>
+	<tr>
+<td align="right">2</td>
+<td align="right">30</td>
+<td>Физрук</td>
+<td>Андрей Крыжний</td>
+	</tr>
+	<tr>
+<td align="right">2</td>
+<td align="right">31</td>
+<td>Физрук</td>
+<td>Артур Сопельник</td>
+	</tr>
+	<tr>
+<td align="right">3</td>
+<td align="right">35</td>
+<td>Мажор</td>
+<td>Павел Прилучный</td>
+	</tr>
+	<tr>
+<td align="right">3</td>
+<td align="right">36</td>
+<td>Мажор</td>
+<td>Карина Разумовская</td>
+	</tr>
+	<tr>
+<td align="right">3</td>
+<td align="right">37</td>
+<td>Мажор</td>
+<td>Дмитрий Шевченко</td>
+	</tr>
+	<tr>
+<td align="right">3</td>
+<td align="right">38</td>
+<td>Мажор</td>
+<td>Александр Обласов</td>
+	</tr>
+	<tr>
+<td align="right">3</td>
+<td align="right">39</td>
+<td>Мажор</td>
+<td>Денис Шведов</td>
+	</tr>
+	<tr>
+<td align="right">3</td>
+<td align="right">40</td>
+<td>Мажор</td>
+<td>Никита Панфилов</td>
+	</tr>
+	<tr>
+<td align="right">4</td>
+<td align="right">44</td>
+<td>Шерлок</td>
+<td>Бенедикт Камбербэтч</td>
+	</tr>
+	<tr>
+<td align="right">4</td>
+<td align="right">45</td>
+<td>Шерлок</td>
+<td>Мартин Фриман</td>
+	</tr>
+	<tr>
+<td align="right">4</td>
+<td align="right">46</td>
+<td>Шерлок</td>
+<td>Уна Стаббс</td>
+	</tr>
+	<tr>
+<td align="right">4</td>
+<td align="right">47</td>
+<td>Шерлок</td>
+<td>Руперт Грейвз</td>
+	</tr>
+	<tr>
+<td align="right">4</td>
+<td align="right">48</td>
+<td>Шерлок</td>
+<td>Луиза Брили</td>
+	</tr>
+	<tr>
+<td align="right">5</td>
+<td align="right">55</td>
+<td>�?гра Престолов</td>
+<td>Питер Динклэйдж</td>
+	</tr>
+	<tr>
+<td align="right">5</td>
+<td align="right">56</td>
+<td>�?гра Престолов</td>
+<td>Лина Хиди</td>
+	</tr>
+	<tr>
+<td align="right">5</td>
+<td align="right">57</td>
+<td>�?гра Престолов</td>
+<td>Эмилия Кларк</td>
+	</tr>
+	<tr>
+<td align="right">5</td>
+<td align="right">58</td>
+<td>�?гра Престолов</td>
+<td>Кит Харингтон</td>
+	</tr>
+	<tr>
+<td align="right">5</td>
+<td align="right">59</td>
+<td>�?гра Престолов</td>
+<td>Софи Тёрнер</td>
+	</tr>
+	<tr>
+<td align="right">5</td>
+<td align="right">60</td>
+<td>�?гра Престолов</td>
+<td>Мэйси Уильямс</td>
+	</tr>
+	<tr>
+<td align="right">5</td>
+<td align="right">61</td>
+<td>�?гра Престолов</td>
+<td>Николай Костер-Вальдау</td>
+	</tr>
+	<tr>
+<td align="right">6</td>
+<td align="right">65</td>
+<td>Острые козырьки</td>
+<td>Киллиан Мёрфи</td>
+	</tr>
+	<tr>
+<td align="right">6</td>
+<td align="right">66</td>
+<td>Острые козырьки</td>
+<td>Пол Андерсон</td>
+	</tr>
+	<tr>
+<td align="right">6</td>
+<td align="right">67</td>
+<td>Острые козырьки</td>
+<td>Хелен Маккрори</td>
+	</tr>
+	<tr>
+<td align="right">6</td>
+<td align="right">68</td>
+<td>Острые козырьки</td>
+<td>Софи Рандл</td>
+	</tr>
+	<tr>
+<td align="right">6</td>
+<td align="right">69</td>
+<td>Острые козырьки</td>
+<td>Нед Деннехи</td>
+	</tr>
+</tbody></table><!-- SQL:
+select * from serials_actors--></body></html>
+
+37 rows selected. 
+
