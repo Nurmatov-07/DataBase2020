@@ -1,0 +1,33 @@
+CREATE TABLE production (
+production_id NUMBER(5,0) NOT NULL ENABLE,
+production_name varchar2(30) NOT NULL ENABLE,
+PRIMARY KEY (production_id))
+
+CREATE TABLE serials_production (
+serial_id NUMBER(5,0) NOT NULL ENABLE,
+production_id NUMBER(5,0) NOT NULL ENABLE)
+
+ALTER TABLE serials_production
+ADD CONSTRAINT CONST001 FOREIGN KEY ("SERIAL_ID")
+	  REFERENCES SERIALS_LIST (ID) ENABLE;
+
+ALTER TABLE serials_production
+ADD CONSTRAINT CONST002 FOREIGN KEY (production_id)
+	  REFERENCES production (production_id) ENABLE;
+
+INSERT ALL
+INTO production(production_id, production_name) VALUES(1, 'Yellow, Black & White')
+INTO production(production_id, production_name) VALUES(2, 'Гуд Стори Медиа')
+INTO production(production_id, production_name) VALUES(3, 'Среда')
+INTO production(production_id, production_name) VALUES(4, 'BBC Television Centre')
+INTO production(production_id, production_name) VALUES(5, 'Home Box Office (HBO)')
+SELECT * FROM DUAL;
+
+INSERT ALL
+INTO serials_production(serial_id, production_id) VALUES(1, 1)
+INTO serials_production(serial_id, production_id) VALUES(2, 2)
+INTO serials_production(serial_id, production_id) VALUES(3, 3)
+INTO serials_production(serial_id, production_id) VALUES(4, 4)
+INTO serials_production(serial_id, production_id) VALUES(5, 5)
+INTO serials_production(serial_id, production_id) VALUES(5, 4)
+SELECT * FROM DUAL;

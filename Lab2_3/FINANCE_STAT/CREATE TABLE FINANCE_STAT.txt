@@ -1,0 +1,18 @@
+CREATE TABLE finance_stat
+(   ID NUMBER (5,0),
+SERIAL_NAME NVARCHAR2(30) NOT NULL ENABLE,
+BUDGET NUMBER(15),
+BOX_OFFICE NUMBER(15),
+PRIMARY KEY(ID))
+TABLESPACE "SYSTEM"
+FOREIGN KEY ("FINANCE")
+	  REFERENCES "SYSTEM"."FINANCE_STAT" ("ID") ENABLE,
+
+INSERT ALL 
+INTO finance_stat(id, serial_name, budget, box_office)VALUES(1, 'Кухня', 26000000, 42000000)
+INTO finance_stat(id, serial_name, budget, box_office)VALUES(2, 'Физрук', 3787878, 9285714)
+INTO finance_stat(id, serial_name, budget, box_office)VALUES(3, 'Мажор', 5000000, 11500000)
+INTO finance_stat(id, serial_name, budget, box_office)VALUES(4, 'Шерлок', 255000000, 823000000)
+INTO finance_stat(id, serial_name, budget, box_office)VALUES(5, 'Игра престолов', 26950000000, 40750000000)
+SELECT * FROM DUAL;
+
