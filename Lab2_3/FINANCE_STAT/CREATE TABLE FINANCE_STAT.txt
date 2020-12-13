@@ -16,3 +16,27 @@ INTO finance_stat(id, serial_name, budget, box_office)VALUES(4, 'Шерлок', 
 INTO finance_stat(id, serial_name, budget, box_office)VALUES(5, 'Игра престолов', 26950000000, 40750000000)
 SELECT * FROM DUAL;
 
+UPDATE finance_stat
+SET box_office_in_russia = CASE ID 
+    WHEN 1 THEN 374675000
+    WHEN 2 THEN 6923000
+    WHEN 3 THEN 8110000
+    WHEN 4 THEN 125000000
+    WHEN 5 THEN 9020000000
+    WHEN 6 THEN 51960000
+    ELSE NULL
+END
+WHERE ID IN(1, 2, 3, 4, 5, 6)
+
+UPDATE finance_stat
+SET box_office_in_USA = CASE ID 
+    WHEN 1 THEN 29577000
+    WHEN 2 THEN 913000
+    WHEN 3 THEN 710000
+    WHEN 4 THEN 451000000
+    WHEN 5 THEN 24733000000
+    WHEN 6 THEN 132777000
+    ELSE NULL
+END
+WHERE ID IN(1, 2, 3, 4, 5, 6)
+
